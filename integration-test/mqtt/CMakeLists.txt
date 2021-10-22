@@ -52,7 +52,6 @@ list(APPEND stest_dep_list
 
 if(${TEST_AGAINST_IOT_CORE})
     set(stest_name "iot_broker_${project_name}_test")
-    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
 else()
     set(stest_name "${project_name}_test")
 endif()
@@ -76,3 +75,7 @@ set_macro_definitions(TARGETS ${stest_name}
                         "BROKER_PORT"
                       FILES_TO_CHECK
                         "test_config.h")
+
+if(${TEST_AGAINST_IOT_CORE})
+    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
+endif()
