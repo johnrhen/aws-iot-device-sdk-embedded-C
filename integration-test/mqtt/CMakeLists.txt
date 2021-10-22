@@ -63,8 +63,15 @@ create_test(${stest_name}
             USE_CUSTOM_RUNNER 1
         )
 
+create_test(iot_broker_${stest_name}
+            ${stest_source}
+            "${stest_link_list}"
+            "${stest_dep_list}"
+            "${test_include_directories}"
+            USE_CUSTOM_RUNNER 1
+        )
 
-set_macro_definitions(TARGETS ${stest_name}
+set_macro_definitions(TARGETS ${stest_name} iot_broker_${stest_name}
                       REQUIRED
                         "ROOT_CA_CERT_PATH"
                         "CLIENT_CERT_PATH"
