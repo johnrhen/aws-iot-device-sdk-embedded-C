@@ -50,7 +50,11 @@ list(APPEND stest_dep_list
             openssl_posix
         )
 
-set(stest_name "${project_name}_test")
+if(${TEST_AGAINST_IOT_CORE})
+    set(stest_name "iot_broker_${project_name}_test")
+else()
+    set(stest_name "${project_name}_test")
+endif()
 
 set(stest_source "${project_name}_test.c")
 create_test(${stest_name}
@@ -61,8 +65,7 @@ create_test(${stest_name}
             USE_CUSTOM_RUNNER 1
         )
 
-if(${TEST_AGAINST_IOT_CORE})
-    set_macro_definitions(TARGETS iot_broker${stest_name}
+set_macro_definitions(TARGETS ${stest_name}
                       REQUIRED
                         "ROOT_CA_CERT_PATH"
                         "CLIENT_CERT_PATH"
@@ -72,19 +75,6 @@ if(${TEST_AGAINST_IOT_CORE})
                         "BROKER_PORT"
                       FILES_TO_CHECK
                         "test_config.h")
-else()
-    set_macro_definitions(TARGETS ${stest_name}
-                      REQUIRED
-                        "ROOT_CA_CERT_PATH"
-                        "CLIENT_CERT_PATH"
-                        "CLIENT_PRIVATE_KEY_PATH"
-                        "CLIENT_IDENTIFIER"
-                        "BROKER_ENDPOINT"
-                        "BROKER_PORT"
-                      FILES_TO_CHECK
-                        "test_config.h")
-endif()
-
 
 if(${TEST_AGAINST_IOT_CORE})
     target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
