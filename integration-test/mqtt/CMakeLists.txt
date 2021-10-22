@@ -62,7 +62,7 @@ create_test(${stest_name}
         )
 
 if(${TEST_AGAINST_IOT_CORE})
-    set_macro_definitions(TARGETS IOT_BROKER_${stest_name}
+    set_macro_definitions(TARGETS iot_broker${stest_name}
                       REQUIRED
                         "ROOT_CA_CERT_PATH"
                         "CLIENT_CERT_PATH"
@@ -72,7 +72,6 @@ if(${TEST_AGAINST_IOT_CORE})
                         "BROKER_PORT"
                       FILES_TO_CHECK
                         "test_config.h")
-    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
 else()
     set_macro_definitions(TARGETS ${stest_name}
                       REQUIRED
@@ -84,4 +83,9 @@ else()
                         "BROKER_PORT"
                       FILES_TO_CHECK
                         "test_config.h")
+endif()
+
+
+if(${TEST_AGAINST_IOT_CORE})
+    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
 endif()
