@@ -923,12 +923,6 @@ TEST_TEAR_DOWN( coreMQTT_Integration )
 TEST_GROUP_RUNNER( coreMQTT_Integration_AWS_IoT_Compatible )
 {
     testingAgainstAWS = true;
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Subscribe_Publish_With_Qos_0 );
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Subscribe_Publish_With_Qos_1 );
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Connect_LWT );
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_ProcessLoop_KeepAlive );
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Resend_Unacked_Publish_QoS1 );
-    RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1 );
     RUN_TEST_CASE( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Publish_With_Retain_Flag );
 }
 
@@ -1012,10 +1006,7 @@ void test_MQTT_Subscribe_Publish_With_Qos_0( void )
 
 /* Include test_MQTT_Subscribe_Publish_With_Qos_0 test case in both test groups to
  * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Subscribe_Publish_With_Qos_0 )
-{
-    test_MQTT_Subscribe_Publish_With_Qos_0();
-}
+
 
 TEST( coreMQTT_Integration, test_MQTT_Subscribe_Publish_With_Qos_0 )
 {
@@ -1085,10 +1076,7 @@ void test_MQTT_Subscribe_Publish_With_Qos_1( void )
 
 /* Include test_MQTT_Subscribe_Publish_With_Qos_1 test case in both test groups to
  * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Subscribe_Publish_With_Qos_1 )
-{
-    test_MQTT_Subscribe_Publish_With_Qos_1();
-}
+
 
 TEST( coreMQTT_Integration, test_MQTT_Subscribe_Publish_With_Qos_1 )
 {
@@ -1232,11 +1220,7 @@ void test_MQTT_Connect_LWT( void )
 }
 
 /* Include test_MQTT_Connect_LWT test case in both test groups to
- * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Connect_LWT )
-{
-    test_MQTT_Connect_LWT();
-}
+*/
 
 TEST( coreMQTT_Integration, test_MQTT_Connect_LWT )
 {
@@ -1266,11 +1250,7 @@ void test_MQTT_ProcessLoop_KeepAlive( void )
 }
 
 /* Include test_MQTT_ProcessLoop_KeepAlive test case in both test groups to
- * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_ProcessLoop_KeepAlive )
-{
-    test_MQTT_ProcessLoop_KeepAlive();
-}
+*/
 
 TEST( coreMQTT_Integration, test_MQTT_ProcessLoop_KeepAlive )
 {
@@ -1447,10 +1427,7 @@ void test_MQTT_Resend_Unacked_Publish_QoS1( void )
 
 /* Include test_MQTT_Resend_Unacked_Publish_QoS1 test case in both test groups to
  * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Resend_Unacked_Publish_QoS1 )
-{
-    test_MQTT_Resend_Unacked_Publish_QoS1();
-}
+
 
 TEST( coreMQTT_Integration, test_MQTT_Resend_Unacked_Publish_QoS1 )
 {
@@ -1591,10 +1568,7 @@ void test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1( void )
 
 /* Include test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1 test case in both test groups to
  * run it against AWS IoT and a different broker */
-TEST( coreMQTT_Integration_AWS_IoT_Compatible, test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1 )
-{
-    test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1();
-}
+
 
 TEST( coreMQTT_Integration, test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1 )
 {
