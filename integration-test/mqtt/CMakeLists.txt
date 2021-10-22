@@ -95,5 +95,6 @@ set_macro_definitions(TARGETS iot_broker_${stest_name}
                         "test_config.h")
 
 if(${TEST_AGAINST_IOT_CORE})
-    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
+    target_compile_definitions(${stest_name} PUBLIC -DAWS_IOT_BROKER=1)
+    target_compile_definitions(iot_broker_${stest_name} PUBLIC -DAWS_IOT_BROKER=1)
 endif()
