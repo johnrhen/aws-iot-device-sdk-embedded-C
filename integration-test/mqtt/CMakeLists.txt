@@ -50,7 +50,13 @@ list(APPEND stest_dep_list
             openssl_posix
         )
 
-set(stest_name "${project_name}_test")
+if(${TEST_AGAINST_IOT_CORE})
+    set(stest_name "iot_broker_${project_name}_test")
+    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
+else()
+    set(stest_name "${project_name}_test")
+endif()
+
 set(stest_source "${project_name}_test.c")
 create_test(${stest_name}
             ${stest_source}
@@ -70,7 +76,3 @@ set_macro_definitions(TARGETS ${stest_name}
                         "BROKER_PORT"
                       FILES_TO_CHECK
                         "test_config.h")
-
-if(${TEST_AGAINST_IOT_CORE})
-    target_compile_definitions(${stest_name} PUBLIC -DTEST_AGAINST_IOT_CORE=1)
-endif()
