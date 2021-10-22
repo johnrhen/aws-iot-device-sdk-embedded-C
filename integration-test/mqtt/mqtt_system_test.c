@@ -80,9 +80,9 @@
 
 /* If testing against IoT Core, a subset of tests which are compatible should be used */
 #if ( defined( TEST_AGAINST_IOT_CORE ) && TEST_AGAINST_IOT_CORE )
-    #define TEST_AGAINST_IOT_CORE    true
+    #define AWS_IOT_BROKER    true
 #else
-    #define TEST_AGAINST_IOT_CORE    false
+    #define AWS_IOT_BROKER    false
 #endif
 
 /**
@@ -1743,7 +1743,7 @@ int main()
 {
     UnityBegin( __FILE__ );
 
-    #if ( TEST_AGAINST_IOT_CORE )
+    #if ( AWS_IOT_BROKER )
         {
             RUN_TEST_GROUP( coreMQTT_Integration_AWS_IoT_Compatible );
         }

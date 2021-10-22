@@ -50,6 +50,7 @@ list(APPEND stest_dep_list
             openssl_posix
         )
 
+
 set(stest_name "${project_name}_test")
 set(stest_source "${project_name}_test.c")
 create_test(${stest_name}
@@ -68,6 +69,28 @@ set_macro_definitions(TARGETS ${stest_name}
                         "CLIENT_IDENTIFIER"
                         "BROKER_ENDPOINT"
                         "BROKER_PORT"
+                      FILES_TO_CHECK
+                        "test_config.h")
+
+
+# Separate test target when testing against an IoT Core broker
+create_test(iot_broker_${stest_name}
+            ${stest_source}
+            "${stest_link_list}"
+            "${stest_dep_list}"
+            "${test_include_directories}"
+            USE_CUSTOM_RUNNER 1
+        )
+
+set_macro_definitions(TARGETS iot_broker_${stest_name}
+                      REQUIRED
+                        "ROOT_CA_CERT_PATH"
+                        "CLIENT_CERT_PATH"
+                        "CLIENT_PRIVATE_KEY_PATH"
+                        "CLIENT_IDENTIFIER"
+                        "BROKER_ENDPOINT"
+                        "BROKER_PORT"
+                        "TEST_AGAINST_IOT_CORE"
                       FILES_TO_CHECK
                         "test_config.h")
 
