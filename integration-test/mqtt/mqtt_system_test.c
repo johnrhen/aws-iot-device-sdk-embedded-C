@@ -1381,12 +1381,6 @@ TEST( coreMQTT_Integration, test_MQTT_Restore_Session_Incoming_Duplicate_PubRel 
  */
 void test_MQTT_Resend_Unacked_Publish_QoS1( void )
 {
-    if( testingAgainstAWS )
-    {
-        /* Add 30 seconds of delay */
-        Clock_SleepMs( 30000 );
-    }
-
     /* Start a persistent session with the broker. */
     startPersistentSession();
 
@@ -1546,12 +1540,6 @@ TEST( coreMQTT_Integration, test_MQTT_Resend_Unacked_Publish_QoS2 )
  */
 void test_MQTT_Restore_Session_Duplicate_Incoming_Publish_Qos1( void )
 {
-    if( testingAgainstAWS )
-    {
-        /* Add 30 seconds of delay */
-        Clock_SleepMs( 30000 );
-    }
-
     /* Start a persistent session with the broker. */
     startPersistentSession();
 
